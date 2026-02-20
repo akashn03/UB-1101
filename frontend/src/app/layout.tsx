@@ -1,0 +1,41 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
+import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "HealMyCity — Civic Issue Reporting",
+  description:
+    "Crowdsourced platform for reporting and tracking civic issues in your city.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {children}
+        <Toaster
+          position="top-center"
+          richColors
+          toastOptions={{
+            style: {
+              background: "rgba(15, 23, 42, 0.9)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              color: "#e2e8f0",
+              backdropFilter: "blur(12px)",
+            },
+          }}
+        />
+      </body>
+    </html>
+  );
+}
